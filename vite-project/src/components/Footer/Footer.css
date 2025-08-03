@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 171px;
+}
+
+.footer__text {
+  margin: 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 14px;
+  color: #000000;
+}
+
+.footer__year {
+  margin: 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 14px;
+  color: #000000;
+}

@@ -1,0 +1,135 @@
+.menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.menu-modal_opened {
+  visibility: visible;
+}
+
+@media screen and (max-width: 767px) {
+  .menu-modal {
+    background-color: white;
+    justify-content: stretch;
+    align-items: stretch;
+    padding: 0;
+    height: 182px;
+    top: 18px;
+    left: 16px;
+    right: 16px;
+    bottom: auto;
+    box-shadow: 0px 2px 8px 0px #0000001a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .menu-modal__content {
+    background-color: transparent;
+    padding: 18px 16px 20px;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menu-modal {
+    background-color: #0000004d;
+    padding: 18px 16px;
+  }
+
+  .menu-modal__content {
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    width: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.menu-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media screen and (max-width: 767px) {
+  .menu-modal__close {
+    top: 11px;
+    right: 11px;
+    padding: 0;
+  }
+}
+
+.menu-modal__close img {
+  width: 16px;
+  height: 16px;
+}
+
+.menu-modal__user-section {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-modal__user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row-reverse;
+}
+
+.menu-modal__user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.menu-modal__username {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  color: #000000;
+}
+
+.menu-modal__add-clothes-btn {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  width: 100%;
+  height: 40px;
+  border: none;
+  margin-top: 8px;
+}
+
+.menu-modal__add-clothes-btn:hover {
+  opacity: 0.8;
+}
