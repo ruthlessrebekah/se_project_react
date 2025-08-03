@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import {
+  coordinates,
+  apiKey,
+  defaultClothingItems,
+} from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -11,12 +15,13 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
-    type: "",
+    weatherType: "",
     temp: { F: 999, C: 999 },
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -61,6 +66,17 @@ function App() {
     e.preventDefault();
     console.log("Form submitted:", formData);
 
+    // Create new clothing item
+    const newItem = {
+      _id: Date.now(), // Simple ID generation for now
+      name: formData.name,
+      weather: formData.weather,
+      imageUrl: formData.imageUrl,
+    };
+
+    // Add new item to clothing items
+    setClothingItems((prevItems) => [...prevItems, newItem]);
+
     // Reset form after submission
     setFormData({ name: "", imageUrl: "", weather: "" });
     setPreviousWeatherSelection("");
@@ -68,7 +84,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -80,7 +96,11 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
       </div>
       <Footer />
       <ModalWithForm
