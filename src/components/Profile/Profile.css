@@ -1,0 +1,10 @@
+.profile {
+  display: flex;
+}
+
+.profile__clothing-items {
+  flex: 1;
+  margin-left: 116px;
+  display: flex;
+  flex-direction: column;
+}

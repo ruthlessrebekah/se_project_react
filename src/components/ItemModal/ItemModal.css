@@ -44,6 +44,14 @@
   justify-content: center;
 }
 
+.modal__caption-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
 .modal__caption {
   margin: 0 0 12px 0;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
@@ -51,15 +59,19 @@
   font-size: 20px;
   line-height: 24px;
   color: #000000;
+  font-style: Bold;
+  letter-spacing: 0%;
 }
 
 .modal__weather {
   margin: 0;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
   color: #000000;
+  font-weight: 700;
+  font-style: Bold;
+  line-height: 24px;
+  letter-spacing: 0%;
 }
 
 .modal__close {
@@ -90,6 +102,20 @@
 .modal__close_type_preview img {
   width: 16px;
   height: 16px;
+}
+
+.modal__delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d00;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-style: Bold;
+  line-height: 24px;
+  letter-spacing: 0%;
 }
 
 @media screen and (max-width: 767px) {

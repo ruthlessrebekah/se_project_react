@@ -19,8 +19,8 @@ WTWR is a responsive web application that provides weather-based clothing recomm
 ### Core Functionality
 
 - **Weather Display**: Real-time weather information with temperature and location
-- **Clothing Recommendations**: Curated clothing items based on current weather conditions
-- **Item Management**: Add new clothing items through a comprehensive form modal
+- **Clothing Recommendations**: Clothing items fetched from a local API server (json-server)
+- **Item Management**: Add and delete clothing items via API (POST/DELETE requests)
 - **Item Viewing**: Preview clothing items in a detailed modal view
 
 ### User Interface
@@ -28,12 +28,12 @@ WTWR is a responsive web application that provides weather-based clothing recomm
 - **Responsive Design**: Optimized for both desktop and mobile devices
 - **Mobile Menu**: Collapsible navigation menu for mobile screens
 - **Modal System**: Multiple modal types for different interactions
-- **Form Validation**: Complete form handling with validation
+- **Form Validation**: Complete form handling with validation and disabled submit on invalid input
 
 ### Technical Features
 
 - **Modern React**: Built with functional components and hooks
-- **CSS Modules**: Component-based styling architecture
+- **API Integration**: All clothing items are managed via a local REST API (json-server)
 - **Accessibility**: Keyboard navigation and screen reader support
 - **Cross-browser**: Compatible with modern web browsers
 
@@ -89,29 +89,36 @@ src/
 
 - Node.js (version 14 or higher)
 - npm or yarn package manager
+- [json-server](https://github.com/typicode/json-server) (for local API)
 
 ### Installation
 
 1. Clone the repository:
 
-```bash
-git clone [repository-url]
-cd se_project_react/vite-project
-```
+   ```bash
+   git clone [repository-url]
+   cd se_project_react
+   ```
 
 2. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. Start the development server:
+3. Start the local API server (in a separate terminal):
 
-```bash
-npm run dev
-```
+   ```bash
+   json-server --watch db.json --port 3001
+   ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173`
 
 ### Available Scripts
 
@@ -119,6 +126,23 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+
+## API Endpoints
+
+- `GET /items` — Fetch all clothing items
+- `POST /items` — Add a new clothing item (name, imageUrl, weather)
+- `DELETE /items/:id` — Delete a clothing item by ID
+
+> **Note:** The API is only available locally. The app will not work on GitHub Pages or any remote deployment until the backend is deployed to a public server.
+
+## Changelog
+
+**2025-08-24**
+
+- Switched all clothing item management to use a local REST API (json-server)
+- Removed all default/static clothing items from the codebase
+- Added form validation and disabled submit button for invalid input
+- Updated README to reflect API usage and local-only limitations
 
 ## Future Enhancements
 

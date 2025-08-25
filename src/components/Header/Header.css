@@ -1,3 +1,18 @@
+.header__nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__profile-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header__nav .toggle-switch {
+  margin-right: 20px;
+}
 .header {
   display: flex;
   align-items: center;
@@ -26,6 +41,7 @@
   line-height: 24px;
   letter-spacing: 0%;
   border: none;
+  cursor: pointer;
 }
 
 .header__user-container {

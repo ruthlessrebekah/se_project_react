@@ -4,8 +4,10 @@ import avatar from "../../assets/avatar.png";
 import menu from "../../assets/menu.png";
 import MenuModal from "../MenuModal/MenuModal";
 import { useState, useEffect } from "react";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, username = "User Name" }) {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
   const currentDate = new Date().toLocaleString("default", {
@@ -40,7 +42,9 @@ function Header({ handleAddClick, weatherData }) {
   return (
     <>
       <header className="header">
-        <img className="header__logo" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
+        </Link>
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
         </p>
@@ -51,16 +55,35 @@ function Header({ handleAddClick, weatherData }) {
         >
           <img className="header__menu-icon" src={menu} alt="Menu" />
         </button>
-        <button
-          className="header__add-clothes-btn"
-          type="button"
-          onClick={handleAddClick}
-        >
-          + Add clothes
-        </button>
-        <div className="header__user-container">
-          <p className="header__username">User Name</p>
-          <img className="header__user-avatar" src={avatar} alt="User Avatar" />
+        <div className="header__nav">
+          <ToggleSwitch
+            isOn={false}
+            handleToggle={() => {}}
+            label="Dark Mode"
+          />
+          <button
+            className="header__add-clothes-btn"
+            type="button"
+            onClick={handleAddClick}
+          >
+            + Add clothes
+          </button>
+          <Link to="/profile" className="header__profile-link">
+            <div className="header__user-container">
+              <p className="header__username">{username}</p>
+              {avatar ? (
+                <img
+                  className="header__user-avatar"
+                  src={avatar}
+                  alt="User Avatar"
+                />
+              ) : (
+                <span className="header__avatar header__avatar_none">
+                  {username?.toUpperCase().charAt(0) || ""}
+                </span>
+              )}
+            </div>
+          </Link>
         </div>
       </header>
 
