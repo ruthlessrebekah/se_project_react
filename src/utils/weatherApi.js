@@ -10,6 +10,20 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
   });
 };
 
+// Map OpenWeatherMap API 'main' values to local weatherOptions keys
+const weatherConditionMap = {
+  clear: "sunny",
+  clouds: "cloudy",
+  fog: "fog",
+  mist: "fog",
+  haze: "fog",
+  rain: "rain",
+  drizzle: "rain",
+  snow: "snow",
+  thunderstorm: "storm",
+  storm: "storm",
+};
+
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
@@ -19,7 +33,9 @@ export const filterWeatherData = (data) => {
   };
   result.weatherType = getWeatherType(data.main.temp);
   result.isDay = isDay(data.sys, Date.now());
-  result.condition = data.weather[0].main.toLowerCase();
+  // Normalize API value to local key
+  const apiCondition = data.weather[0].main.toLowerCase();
+  result.condition = weatherConditionMap[apiCondition] || "sunny";
   return result;
 };
 

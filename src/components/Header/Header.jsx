@@ -56,11 +56,7 @@ function Header({ handleAddClick, weatherData, username = "User Name" }) {
           <img className="header__menu-icon" src={menu} alt="Menu" />
         </button>
         <div className="header__nav">
-          <ToggleSwitch
-            isOn={false}
-            handleToggle={() => {}}
-            label="Dark Mode"
-          />
+          <ToggleSwitch />
           <button
             className="header__add-clothes-btn"
             type="button"

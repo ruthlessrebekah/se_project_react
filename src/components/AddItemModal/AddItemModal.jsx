@@ -7,6 +7,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     imageUrl: "",
     weather: "",
   });
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,9 +20,15 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem(formData);
-    resetForm();
-    onClose();
+    setError("");
+    onAddItem(formData)
+      .then(() => {
+        resetForm();
+        onClose();
+      })
+      .catch(() => {
+        setError("Failed to add item. Please try again.");
+      });
   };
 
   const isFormValid =
@@ -41,6 +48,9 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       onSubmit={handleSubmit}
       isSubmitDisabled={!isFormValid}
     >
+      {error && (
+        <div style={{ color: "red", marginBottom: "12px" }}>{error}</div>
+      )}
       <label htmlFor="name" className="modal__label">
         Name
         <input

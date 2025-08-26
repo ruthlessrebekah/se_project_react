@@ -59,7 +59,7 @@
   font-size: 20px;
   line-height: 24px;
   color: #000000;
-  font-style: Bold;
+
   letter-spacing: 0%;
 }
 
@@ -69,7 +69,7 @@
   font-size: 20px;
   color: #000000;
   font-weight: 700;
-  font-style: Bold;
+
   line-height: 24px;
   letter-spacing: 0%;
 }
@@ -113,7 +113,7 @@
   line-height: 20px;
   cursor: pointer;
   font-size: 20px;
-  font-style: Bold;
+
   line-height: 24px;
   letter-spacing: 0%;
 }

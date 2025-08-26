@@ -62,7 +62,7 @@ function App() {
   const onAddItem = (item) => {
     addItem(item)
       .then((newItem) => {
-        setClothingItems((prevItems) => [...prevItems, newItem]);
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
       .catch((err) => {

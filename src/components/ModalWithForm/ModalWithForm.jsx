@@ -50,7 +50,6 @@ function ModalWithForm({
         <form className="modal__form" onSubmit={handleSubmit}>
           {children}
           <button
-            onSubmit={handleSubmit}
             type="submit"
             className="modal__submit"
             disabled={isSubmitDisabled}
