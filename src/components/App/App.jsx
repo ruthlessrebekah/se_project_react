@@ -1,17 +1,22 @@
+import "./App.css";
+
+// React imports
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import "./App.css";
-import { coordinates, apiKey } from "../../utils/constants";
+// Components
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+
+// Utils/API
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, deleteItem } from "../../utils/api";
+import { coordinates, apiKey } from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -44,7 +49,7 @@ function App() {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== card._id)
         );
-        setActiveModal("");
+        closeActiveModal();
       })
       .catch((err) => {
         console.error("Failed to delete item:", err);
@@ -60,13 +65,14 @@ function App() {
   };
 
   const onAddItem = (item) => {
-    addItem(item)
+    return addItem(item)
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
       .catch((err) => {
         console.error("Failed to add item:", err);
+        throw err; // rethrow so the modal can catch it
       });
   };
 
@@ -78,7 +84,7 @@ function App() {
         setIsWeatherDataLoaded(true);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Failed to fetch weather data:", err);
         setIsWeatherDataLoaded(false);
       });
   }, []);
@@ -89,7 +95,7 @@ function App() {
         setClothingItems(data);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Failed to fetch clothing items:", err);
       });
   }, []);
 

@@ -1,34 +1,25 @@
 import { useState } from "react";
+import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
-  const [formData, setFormData] = useState({
+  const { formData, handleInputChange, resetForm } = useForm({
     name: "",
     imageUrl: "",
     weather: "",
   });
   const [error, setError] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const resetForm = () => {
-    setFormData({ name: "", imageUrl: "", weather: "" });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    onAddItem(formData)
-      .then(() => {
-        resetForm();
-        onClose();
-      })
-      .catch(() => {
-        setError("Failed to add item. Please try again.");
-      });
+    try {
+      onAddItem(formData);
+      resetForm();
+      onClose();
+    } catch {
+      setError("Failed to add item. Please try again.");
+    }
   };
 
   const isFormValid =
