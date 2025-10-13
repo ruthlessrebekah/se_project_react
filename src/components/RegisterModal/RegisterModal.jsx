@@ -14,12 +14,13 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    try {
-      onRegister(formData);
-      resetForm();
-    } catch {
-      setError("Failed to register. Please try again.");
-    }
+    onRegister(formData)
+      .then(() => {
+        resetForm();
+      })
+      .catch((err) => {
+        setError("Failed to register. Please try again.");
+      });
   };
 
   const isFormValid =

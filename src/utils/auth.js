@@ -1,11 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./api";
 
-// Helper to check fetch response
-function checkResponse(response) {
-  return response.ok
-    ? response.json()
-    : Promise.reject(`Error ${response.status}: ${response.statusText}`);
-}
+const baseUrl = "http://localhost:3001";
 
 // POST request for user registration
 export function signup({ name, avatar, email, password }) {

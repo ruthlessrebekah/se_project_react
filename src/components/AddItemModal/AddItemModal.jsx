@@ -13,13 +13,15 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    try {
-      onAddItem(formData);
-      resetForm();
-      onClose();
-    } catch {
-      setError("Failed to add item. Please try again.");
-    }
+
+    onAddItem(formData)
+      .then(() => {
+        resetForm();
+        onClose();
+      })
+      .catch((err) => {
+        setError("Failed to add item. Please try again.");
+      });
   };
 
   const isFormValid =

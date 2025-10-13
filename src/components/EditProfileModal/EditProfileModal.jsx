@@ -24,12 +24,13 @@ const EditProfileModal = ({ isOpen, onEditProfile, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    try {
-      onEditProfile(formData);
-      resetForm();
-    } catch {
-      setError("Failed to update profile. Please try again.");
-    }
+    onEditProfile(formData)
+      .then(() => {
+        resetForm();
+      })
+      .catch((err) => {
+        setError("Failed to update profile. Please try again.");
+      });
   };
 
   const isFormValid =

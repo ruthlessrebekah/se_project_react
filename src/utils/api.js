@@ -1,7 +1,7 @@
 const baseUrl = "http://localhost:3001";
 
 // Helper to check fetch response
-function checkResponse(response) {
+export function checkResponse(response) {
   return response.ok
     ? response.json()
     : Promise.reject(`Error ${response.status}: ${response.statusText}`);
