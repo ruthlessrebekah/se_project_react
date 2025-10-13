@@ -4,7 +4,8 @@
   height: 80px;
   border-radius: 12px;
   overflow: hidden;
-  width: 1360px;
+  width: 100%;
+  max-width: 1360px;
 }
 
 .weather-card__temp {
@@ -27,7 +28,8 @@
 @media screen and (max-width: 767px) {
   .weather-card {
     height: 70px;
-    margin: 0 16px;
+    margin: 0;
+    width: 100%;
   }
 
   .weather-card__temp {

@@ -1,27 +1,126 @@
 .sidebar__profile {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 19px;
+}
+
+.sidebar__user-info {
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  margin-top: 19px;
+  margin-bottom: 0;
 }
+
 .sidebar__username {
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 0%;
-
-  line-height: 100%;
-  margin-top: 16px;
-  margin-bottom: 15px;
-  height: 25px;
-  display: flex;
-  align-items: center;
+  line-height: 24px;
+  margin: 0;
 }
 
 .sidebar__avatar {
   width: 56px;
   height: 56px;
-  border: 1px solid #00000080;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__avatar_placeholder {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidebar__edit-btn {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.sidebar__signout-btn {
+  margin-top: 0;
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .sidebar__user-info {
+    align-items: flex-start;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .sidebar__username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 180px;
+    min-width: 0;
+  }
+
+  .sidebar__profile {
+    position: relative;
+    min-height: 80px;
+  }
+
+  .sidebar__edit-btn {
+    position: absolute;
+    top: 36px;
+    left: 72px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #00000099;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 180px;
+  }
+
+  .sidebar__signout-btn {
+    position: absolute;
+    top: 60px;
+    left: 72px;
+    margin-top: 0;
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #00000099;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 180px;
+  }
 }

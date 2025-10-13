@@ -4,32 +4,98 @@
   position: relative;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .card__name {
-  position: absolute;
-  top: 15px;
   margin: 0;
   font-weight: 700;
-
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0%;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   background-color: #ffffff;
-  width: 91px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   opacity: 0.6;
+  border-radius: 4px;
+  padding: 2px 12px;
+  white-space: nowrap;
+  width: auto;
 }
 
 .card__image {
-  width: 100%;
+  width: 325px;
+  height: 328px;
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__image-placeholder {
+  width: 325px;
+  height: 328px;
+  border-radius: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card__image-error {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.card__image-name {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.card__header {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.card__like-icon {
+  width: 18px;
+  height: 15px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 767px) {
@@ -42,6 +108,11 @@
     width: 164px;
     height: 164px;
     object-fit: cover;
+  }
+
+  .card__image-placeholder {
+    width: 164px;
+    height: 164px;
   }
 
   .card__name {

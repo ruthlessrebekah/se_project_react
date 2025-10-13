@@ -1,12 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
 import whiteCloseIcon from "../../assets/white-close-icon.png";
 import "./ItemModal.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, onClose, card, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [imageError, setImageError] = useState(false);
+
+  // Check if the current user is the owner of the current clothing item
+  const isOwn = currentUser && card.owner === currentUser._id;
+
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   useEffect(() => {
@@ -25,6 +36,11 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
     };
   }, [activeModal, onClose]);
 
+  // Reset image error when card changes
+  useEffect(() => {
+    setImageError(false);
+  }, [card]);
+
   return (
     <div
       className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}
@@ -38,17 +54,31 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
         >
           <img src={whiteCloseIcon} alt="Close" />
         </button>
-        <img src={card.imageUrl} alt={card.name} className="modal__image" />
+        {imageError ? (
+          <div className="modal__image-placeholder">
+            <p className="modal__image-error">Image failed to load</p>
+            <p className="modal__image-name">{card.name}</p>
+          </div>
+        ) : (
+          <img
+            src={card.imageUrl}
+            alt={card.name}
+            className="modal__image"
+            onError={handleImageError}
+          />
+        )}
         <div className="modal__footer">
           <div className="modal__caption-row">
             <h2 className="modal__caption">{card.name}</h2>
-            <button
-              className="modal__delete-btn"
-              type="button"
-              onClick={() => onDelete(card)}
-            >
-              Delete
-            </button>
+            {isOwn && (
+              <button
+                className="modal__delete-btn"
+                type="button"
+                onClick={() => onDelete(card)}
+              >
+                Delete item
+              </button>
+            )}
           </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>

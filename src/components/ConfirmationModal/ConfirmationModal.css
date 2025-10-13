@@ -1,0 +1,116 @@
+.modal__content_type_confirmation {
+  width: 670px;
+  height: 280px;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.confirmation__content {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.confirmation__title {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #000000;
+  margin: 0;
+}
+
+.confirmation__subtitle {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000000;
+  margin: 0;
+}
+
+.confirmation__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.confirmation__delete-btn {
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #ff4d00;
+  cursor: pointer;
+  padding: 0;
+}
+
+.confirmation__delete-btn:hover {
+  opacity: 0.6;
+}
+
+.confirmation__cancel-btn {
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+}
+
+.confirmation__cancel-btn:hover {
+  opacity: 0.6;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+  .modal__content_type_confirmation {
+    width: 375px;
+    height: 240px;
+    padding: 28px 20px;
+  }
+
+  .confirmation__title {
+    font-size: 20px;
+    line-height: 22px;
+  }
+
+  .confirmation__subtitle {
+    font-size: 20px;
+    line-height: 18px;
+  }
+
+  .confirmation__buttons {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 407px) {
+  .modal__content_type_confirmation {
+    width: 100%;
+    margin: 0;
+    min-width: unset;
+  }
+}

@@ -10,6 +10,7 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isSubmitDisabled = false,
+  name,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ function ModalWithForm({
         <button type="button" className="modal__close" onClick={onClose}>
           <img src={closeIcon} alt="Close" />
         </button>
-        <form className="modal__form" onSubmit={handleSubmit}>
+        <form className="modal__form" name={name} onSubmit={handleSubmit}>
           {children}
           <button
             type="submit"

@@ -2,10 +2,19 @@
   background-color: #f3f3f3;
   min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .page__content {
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .page__content {
+    padding: 0 16px;
+  }
 }

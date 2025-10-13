@@ -15,7 +15,6 @@
 
 .cards__text {
   font-weight: 700;
-
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -25,16 +24,29 @@
 }
 
 @media screen and (max-width: 767px) {
+  .cards {
+    min-width: unset;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
   .cards__text {
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    margin: 32px 16px 20px;
-    padding: 0 16px;
+    margin: 32px auto 20px;
+    padding: 0;
+    max-width: calc(100vw - 32px);
   }
 
   .cards__list {
     justify-content: center;
     gap: 16px;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    width: 100%;
   }
 }
