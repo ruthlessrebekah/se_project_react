@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -21,7 +22,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
         setError("");
         setIsPasswordIncorrect(false);
       })
-      .catch((err) => {
+      .catch(() => {
         // Always show "Incorrect password" label for any authentication error
         setError("Email or password is incorrect");
         setIsPasswordIncorrect(true);
@@ -91,6 +92,13 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
       </div>
     </ModalWithForm>
   );
+};
+
+LoginModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onRegisterClick: PropTypes.func.isRequired,
 };
 
 export default LoginModal;

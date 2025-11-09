@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import "./ConfirmationModal.css";
 import closeIcon from "../../assets/close-icon.png";
 
@@ -57,5 +58,11 @@ function ConfirmationModal({ isOpen, onClose, onConfirm }) {
     </div>
   );
 }
+
+ConfirmationModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
+};
 
 export default ConfirmationModal;

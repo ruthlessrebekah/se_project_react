@@ -1,8 +1,8 @@
 import "./MenuModal.css";
 import closeIcon from "../../assets/black-close-icon.png";
-import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -10,7 +10,6 @@ function MenuModal({
   isOpen,
   onClose,
   onAddClick,
-  onLogout,
   isLoggedIn,
   onRegisterClick,
   onLoginClick,
@@ -112,5 +111,15 @@ function MenuModal({
     </div>
   );
 }
+
+MenuModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onAddClick: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  onRegisterClick: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
+};
 
 export default MenuModal;

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import "./ModalWithForm.css";
 import closeIcon from "../../assets/close-icon.png";
 
@@ -62,5 +63,16 @@ function ModalWithForm({
     </div>
   );
 }
+
+ModalWithForm.propTypes = {
+  children: PropTypes.node.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isSubmitDisabled: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+};
 
 export default ModalWithForm;

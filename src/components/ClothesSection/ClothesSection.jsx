@@ -1,4 +1,5 @@
 import "./ClothesSection.css";
+import PropTypes from "prop-types";
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -40,5 +41,18 @@ function ClothesSection({
     </div>
   );
 }
+
+ClothesSection.propTypes = {
+  handleCardClick: PropTypes.func.isRequired,
+  handleAddClick: PropTypes.func.isRequired,
+  clothingItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+      // Add other item properties as needed
+    })
+  ).isRequired,
+  onCardLike: PropTypes.func.isRequired,
+};
 
 export default ClothesSection;

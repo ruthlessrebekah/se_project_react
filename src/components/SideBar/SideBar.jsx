@@ -1,5 +1,6 @@
 import "./SideBar.css";
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 // SideBar component for user profile and actions
@@ -43,5 +44,10 @@ function SideBar({ handleEditProfileClick, handleSignOut }) {
     </aside>
   );
 }
+
+SideBar.propTypes = {
+  handleEditProfileClick: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
+};
 
 export default SideBar;

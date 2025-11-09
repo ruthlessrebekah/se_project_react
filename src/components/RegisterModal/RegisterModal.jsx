@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -18,7 +19,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
       .then(() => {
         resetForm();
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to register. Please try again.");
       });
   };
@@ -120,6 +121,13 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
       </div>
     </ModalWithForm>
   );
+};
+
+RegisterModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
 };
 
 export default RegisterModal;

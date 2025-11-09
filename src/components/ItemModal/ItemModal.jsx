@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import PropTypes from "prop-types";
 import whiteCloseIcon from "../../assets/white-close-icon.png";
 import "./ItemModal.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -86,5 +87,18 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
     </div>
   );
 }
+
+ItemModal.propTypes = {
+  activeModal: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  card: PropTypes.shape({
+    _id: PropTypes.string,
+    owner: PropTypes.string,
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    weather: PropTypes.string,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default ItemModal;

@@ -77,7 +77,7 @@ function App() {
         closeActiveModal();
         setItemToDelete(null);
       })
-      .catch((err) => {
+      .catch(() => {
         // Handle delete error silently or show user feedback
       });
   };
@@ -109,43 +109,43 @@ function App() {
   // Authentication handlers
   const handleRegister = (userData) => {
     return signup(userData)
-      .then((res) => {
+      .then(() => {
         // After successful registration, automatically sign the user in
         return signin({ email: userData.email, password: userData.password });
       })
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
+      .then((response) => {
+        if (response.token) {
+          localStorage.setItem("jwt", response.token);
           setIsLoggedIn(true);
           // Fetch user data using the token
-          return checkToken(res.token);
+          return checkToken(response.token);
         }
       })
       .then((user) => {
         setCurrentUser(user);
         closeActiveModal();
       })
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        throw error;
       });
   };
 
   const handleLogin = (userData) => {
     return signin(userData)
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
+      .then((response) => {
+        if (response.token) {
+          localStorage.setItem("jwt", response.token);
           setIsLoggedIn(true);
           // Fetch user data using the token
-          return checkToken(res.token);
+          return checkToken(response.token);
         }
       })
       .then((user) => {
         setCurrentUser(user);
         closeActiveModal();
       })
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        throw error;
       });
   };
 
@@ -161,8 +161,8 @@ function App() {
         setCurrentUser(updatedUser);
         closeActiveModal();
       })
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        throw error;
       });
   };
 
@@ -172,8 +172,8 @@ function App() {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
       })
-      .catch((err) => {
-        throw err; // rethrow so the modal can catch it
+      .catch((error) => {
+        throw error; // rethrow so the modal can catch it
       });
   };
 
@@ -187,7 +187,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => {
+          .catch(() => {
             // Handle like error silently
           })
       : // if not, send a request to remove the user's id from the card's likes array
@@ -197,7 +197,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
-          .catch((err) => {
+          .catch(() => {
             // Handle unlike error silently
           });
   };
@@ -209,7 +209,7 @@ function App() {
         setWeatherData(filteredData);
         setIsWeatherDataLoaded(true);
       })
-      .catch((err) => {
+      .catch(() => {
         // Set fallback weather data so app can still function
         setWeatherData({
           temp: { F: 999, C: 999 },
@@ -227,7 +227,7 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch((err) => {
+      .catch(() => {
         // Handle items fetch error silently
       });
   }, []);
@@ -242,7 +242,7 @@ function App() {
           setCurrentUser(user);
           setIsLoading(false);
         })
-        .catch((err) => {
+        .catch(() => {
           localStorage.removeItem("jwt");
           setIsLoading(false);
         });

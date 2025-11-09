@@ -1,5 +1,6 @@
 import "./ItemCard.css";
 import { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import likedHeart from "../../assets/liked-heart.png";
 import unlikedHeart from "../../assets/unliked-heart.png";
@@ -66,4 +67,16 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     </li>
   );
 }
+
+ItemCard.propTypes = {
+  item: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    likes: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  onCardLike: PropTypes.func.isRequired,
+};
+
 export default ItemCard;

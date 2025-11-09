@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -19,7 +20,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
         resetForm();
         onClose();
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to add item. Please try again.");
       });
   };
@@ -116,6 +117,12 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       </fieldset>
     </ModalWithForm>
   );
+};
+
+AddItemModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onAddItem: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default AddItemModal;

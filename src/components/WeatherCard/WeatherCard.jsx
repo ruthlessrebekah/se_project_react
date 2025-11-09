@@ -1,5 +1,6 @@
 import "./WeatherCard.css";
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
 
@@ -38,4 +39,16 @@ const WeatherCard = ({ weatherData }) => {
     </section>
   );
 };
+
+WeatherCard.propTypes = {
+  weatherData: PropTypes.shape({
+    temp: PropTypes.shape({
+      F: PropTypes.number.isRequired,
+      C: PropTypes.number.isRequired,
+    }).isRequired,
+    isDay: PropTypes.bool.isRequired,
+    condition: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export default WeatherCard;

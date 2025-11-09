@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import useForm from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -28,7 +29,7 @@ const EditProfileModal = ({ isOpen, onEditProfile, onClose }) => {
       .then(() => {
         resetForm();
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to update profile. Please try again.");
       });
   };
@@ -82,6 +83,12 @@ const EditProfileModal = ({ isOpen, onEditProfile, onClose }) => {
       </label>
     </ModalWithForm>
   );
+};
+
+EditProfileModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onEditProfile: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default EditProfileModal;

@@ -1,4 +1,5 @@
 import ClothesSection from "../ClothesSection/ClothesSection";
+import PropTypes from "prop-types";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 
@@ -29,5 +30,19 @@ function Profile({
     </div>
   );
 }
+
+Profile.propTypes = {
+  handleCardClick: PropTypes.func.isRequired,
+  handleAddClick: PropTypes.func.isRequired,
+  clothingItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  handleEditProfileClick: PropTypes.func.isRequired,
+  onCardLike: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};
 
 export default Profile;

@@ -1,9 +1,9 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.png";
 import menu from "../../assets/menu.png";
 import MenuModal from "../MenuModal/MenuModal";
 import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -143,5 +143,16 @@ function Header({
     </>
   );
 }
+
+Header.propTypes = {
+  handleAddClick: PropTypes.func.isRequired,
+  weatherData: PropTypes.shape({
+    city: PropTypes.string,
+  }).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  handleRegisterClick: PropTypes.func.isRequired,
+  handleLoginClick: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};
 
 export default Header;

@@ -1,7 +1,7 @@
 import { checkResponse } from "./api";
 
 const baseUrl =
-  process.env.NODE_ENV === "production"
+  import.meta.env.MODE === "production"
     ? "https://api.ruthless-wtwr-2025.jumpingcrab.com"
     : "http://localhost:3001";
 
