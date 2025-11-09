@@ -1,6 +1,9 @@
 import { checkResponse } from "./api";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.ruthless-wtwr-2025.jumpingcrab.com"
+    : "http://localhost:3001";
 
 // POST request for user registration
 export function signup({ name, avatar, email, password }) {
